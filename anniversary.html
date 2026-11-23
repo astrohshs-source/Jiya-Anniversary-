@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1b1331">
+<title>365 · Jiya</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#1b1331;--card:#291d47;--ink:#f4ecdc;--soft:#b9afd1;--red:#f0788f;--pol:#fbf6ec;--polink:#2a2140;--tape:rgba(240,208,120,.8)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Fraunces',serif;font-weight:400;overflow-x:hidden;
+ background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.2px);background-size:22px 22px}
+img{display:block;max-width:100%}
+.hand{font-family:'Caveat',cursive;font-weight:700}
+#gate{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;background:var(--paper);transition:opacity 1s,visibility 1s}
+#gate.open{opacity:0;visibility:hidden}
+.seal{width:104px;height:104px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e0647a,#a8334a);color:#fff;font-size:42px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -8px rgba(168,51,74,.7),inset 0 -5px 10px rgba(0,0,0,.2);border:0;cursor:pointer;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.gt{font-size:clamp(40px,12vw,64px);margin:30px 0 4px;line-height:1}
+.gs{color:var(--soft);font-style:italic;margin:0}
+#snd{position:fixed;top:14px;right:14px;z-index:30;width:42px;height:42px;border-radius:50%;border:1.5px solid var(--ink);background:var(--card);font-size:16px;cursor:pointer;opacity:0;transition:opacity .8s}
+#snd.show{opacity:1}
+section{max-width:600px;margin:0 auto;padding:70px 22px}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s,transform .9s}
+.rv.in{opacity:1;transform:none}
+.hero{text-align:center;padding-top:90px}
+.hero .hand{font-size:26px;color:var(--red)}
+.hero h1{font-size:clamp(44px,13vw,76px);line-height:1;margin:6px 0 30px;font-weight:600;font-style:italic}
+.ticket{display:inline-block;background:var(--card);border:2px dashed var(--ink);border-radius:12px;padding:20px 22px;box-shadow:6px 6px 0 rgba(0,0,0,.35);transform:rotate(-1.5deg)}
+.cnt{display:flex;gap:14px;justify-content:center}
+.cnt div{min-width:58px}
+.cnt b{display:block;font-size:38px;font-weight:600;color:var(--red);line-height:1}
+.cnt span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.stamp{margin-top:14px;padding-top:12px;border-top:1px solid rgba(244,236,220,.25);font-size:13px;color:var(--soft)}
+.note{max-width:330px;margin:26px auto 0;color:var(--soft);font-style:italic;font-size:15px}
+.paper{background:var(--card);padding:40px 28px 34px;border-radius:4px;box-shadow:0 18px 40px -20px rgba(0,0,0,.6);position:relative;
+ background-image:repeating-linear-gradient(transparent 0 33px,rgba(240,120,143,.16) 33px 34px)}
+.paper:before,.pol:before{content:"";position:absolute;top:-13px;left:50%;width:96px;height:26px;margin-left:-48px;background:var(--tape);transform:rotate(-3deg)}
+.paper p{font-size:18px;line-height:34px;margin:0 0 34px}
+.to{font-size:36px;color:var(--red);line-height:34px;margin-bottom:34px}
+.sign{text-align:right;font-size:30px;line-height:1}
+h2{text-align:center;font-size:clamp(30px,8vw,42px);font-weight:600;font-style:italic;margin:0 0 6px}
+.sub{text-align:center;color:var(--soft);font-style:italic;margin:0 0 44px;font-size:15px}
+.pol{position:relative;background:var(--pol);padding:14px 14px 18px;margin:0 auto 54px;max-width:380px;box-shadow:0 18px 36px -16px rgba(0,0,0,.65)}
+.pol:nth-of-type(odd){transform:rotate(-2.2deg)}
+.pol:nth-of-type(even){transform:rotate(2deg)}
+.pol img{width:100%;filter:grayscale(1) blur(7px) brightness(1.35);transition:filter 2.6s ease .3s}
+.pol.in img{filter:none}
+.pol figcaption{margin-top:12px;font:700 25px/1.15 'Caveat',cursive;text-align:center;color:var(--polink)}
+.wide{max-width:460px}
+.tl{max-width:420px;margin:0 auto}
+.tl div{display:flex;gap:16px;margin-bottom:24px;align-items:flex-start}
+.tl small{flex:0 0 94px;font:700 22px/1.1 'Caveat',cursive;color:var(--red)}
+.tl p{margin:0;line-height:1.5}
+.tap{display:flex;flex-direction:column;gap:14px;max-width:420px;margin:0 auto}
+.t{background:var(--card);border:1.5px solid var(--ink);border-radius:6px;padding:16px 20px;text-align:center;cursor:pointer;box-shadow:4px 4px 0 rgba(0,0,0,.35)}
+.t i{font:700 23px 'Caveat',cursive;font-style:normal;color:var(--red)}
+.t em{display:none;font-size:17px;line-height:1.5}
+.t.o i{display:none}.t.o em{display:block}
+#vs{text-align:center}
+#vb{background:var(--red);color:#fff;border:0;font:700 24px 'Caveat',cursive;padding:16px 28px;border-radius:14px;cursor:pointer;box-shadow:5px 5px 0 rgba(0,0,0,.5);max-width:330px}
+.end{text-align:center}
+.end p{line-height:1.8;max-width:440px;margin:0 auto 14px;font-size:17px}
+footer{text-align:center;padding:40px 22px 110px}
+.sig{font-size:clamp(46px,13vw,70px);color:var(--red);line-height:1}
+.sd{margin-top:14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+@media(prefers-reduced-motion:reduce){.rv{transition:none;opacity:1;transform:none}.seal{animation:none}.pol img{filter:none;transition:none}}
+</style>
+</head>
+<body>
+<button id="snd" aria-label="sound">🔊</button>
+
+<div id="gate">
+  <button class="seal" id="go" aria-label="open">♥</button>
+  <div class="gt hand">our first year</div>
+  <p class="gs">tap the seal</p>
+</div>
+
+<audio id="song" src="ishq-de-fanniyar.mp3" loop preload="auto"></audio>
+<audio id="voice" src="anniversary-voice.mp3" preload="auto"></audio>
+
+<section class="hero rv">
+  <div class="hand">for Jiya</div>
+  <h1>365 days of us</h1>
+  <div class="ticket">
+    <div class="cnt">
+      <div><b id="d">0</b><span>days</span></div>
+      <div><b id="h">0</b><span>hrs</span></div>
+      <div><b id="m">0</b><span>min</span></div>
+      <div><b id="s">0</b><span>sec</span></div>
+    </div>
+    <div class="stamp">since 24 Nov 2025 · 2:45 AM Nepal · 2:00 AM Pakistan</div>
+  </div>
+  <p class="note">Two clocks, two countries, one moment. Day 365 lands on that exact minute.</p>
+</section>
+
+<section class="rv">
+  <div class="paper">
+    <div class="to hand">Jiya,</div>
+    <p>A year ago, deep in the night, 2:45 in Nepal and 2:00 in Pakistan, I met you. I had no idea I was meeting my home.</p>
+    <p>You are my soul. You are my peace. Every day since, you have felt like home: on the good days, the quiet ones, and the days we are far apart.</p>
+    <p>I miss you in every moment. I pray for you in every moment. I want you, not like a wish, but like a direction I walk in every day.</p>
+    <p>Thank you for this year. I would choose every single day of it again.</p>
+    <div class="sign hand">— Lakshya</div>
+  </div>
+</section>
+
+<section>
+  <h2 class="rv">Our year</h2>
+  <p class="sub rv">the short version</p>
+  <div class="tl rv">
+    <div><small>24 Nov 2025</small><p>I met you. The night everything started.</p></div>
+    <div><small>a few days later</small><p>Our first screenshots together. Proof it was real.</p></div>
+    <div><small>10 Aug 2026</small><p>Your first birthday with me.</p></div>
+    <div><small>today</small><p>365 days, and I am still falling.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="rv">Pages from our future album</h2>
+  <p class="sub rv">not taken yet. but I see every one of them.</p>
+  <figure class="pol wide rv"><img src="ann-1.jpeg" alt="" loading="lazy"><figcaption>us, being ridiculous in a photobooth</figcaption></figure>
+  <figure class="pol rv"><img src="ann-2.jpeg" alt="" loading="lazy"><figcaption>close enough to hear you breathe</figcaption></figure>
+  <figure class="pol rv"><img src="ann-3.jpeg" alt="" loading="lazy"><figcaption>the sunset I owe you</figcaption></figure>
+  <figure class="pol rv"><img src="ann-9.jpeg" alt="" loading="lazy"><figcaption>the one I keep coming back to</figcaption></figure>
+  <figure class="pol rv"><img src="ann-10.jpeg" alt="" loading="lazy"><figcaption>forehead to forehead, nothing else</figcaption></figure>
+  <figure class="pol rv"><img src="ann-11.jpeg" alt="" loading="lazy"><figcaption>quiet. just this.</figcaption></figure>
+  <figure class="pol rv"><img src="ann-7.jpeg" alt="" loading="lazy"><figcaption>a slow evening, your head on my shoulder</figcaption></figure>
+  <figure class="pol rv"><img src="ann-8.jpeg" alt="" loading="lazy"><figcaption>stars over a fire. warm because of you</figcaption></figure>
+</section>
+
+<section>
+  <h2 class="rv">Tap them</h2>
+  <p class="sub rv">small notes, folded</p>
+  <div class="tap rv">
+    <div class="t"><i>what home feels like</i><em>Your voice at the end of a long day. Nothing else comes close.</em></div>
+    <div class="t"><i>what I pray for</i><em>Your peace. Your health. Your happiness, before mine, every time.</em></div>
+    <div class="t"><i>what I miss</i><em>Everything. The small things most of all.</em></div>
+    <div class="t"><i>what I'm proud of</i><em>Us. That we kept choosing each other, even from two countries.</em></div>
+    <div class="t"><i>why you</i><em>With you I don't have to try to be someone. I'm just mine, and yours.</em></div>
+  </div>
+</section>
+
+<section id="vs" class="rv"><button id="vb">🎧 something I want to tell you myself</button></section>
+
+<section class="end rv">
+  <h2>Where I'm walking</h2>
+  <p class="sub">not a promise made loudly</p>
+  <p>A direction, taken one day at a time. A life with you: Europe, a home, a morning I wake up next to you.</p>
+  <p>I am preparing, I am working, and I am not stopping. Because the best part of every next chapter is you.</p>
+</section>
+
+<footer>
+  <div class="sig hand">happy 1 year, Jiya</div>
+  <div class="sd">24 · 11 · 2026 — 365 days, more to go</div>
+</footer>
+
+<script>
+(function(){
+  var START=new Date('2025-11-24T02:45:00+05:45'); // 2:45 AM Nepal = 2:00 AM Pakistan
+  var $=function(i){return document.getElementById(i)};
+  var song=$('song'),voice=$('voice'),snd=$('snd');
+  $('go').onclick=function(){
+    $('gate').classList.add('open');snd.classList.add('show');
+    song.volume=.55;var p=song.play();if(p&&p.catch)p.catch(function(){});
+  };
+  var mute=false;
+  snd.onclick=function(){mute=!mute;song.muted=mute;snd.textContent=mute?'🔇':'🔊'};
+  function tick(){
+    var s=Math.max(0,Math.floor((Date.now()-START)/1000));
+    $('d').textContent=Math.floor(s/86400);$('h').textContent=Math.floor(s%86400/3600);
+    $('m').textContent=Math.floor(s%3600/60);$('s').textContent=s%60;
+  }
+  tick();setInterval(tick,1000);
+  var els=document.querySelectorAll('.rv,.pol');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.2});
+    els.forEach(function(e){io.observe(e)});
+  }else els.forEach(function(e){e.classList.add('in')});
+  document.querySelectorAll('.t').forEach(function(e){e.onclick=function(){e.classList.toggle('o')}});
+  var vb=$('vb'),on=false,label=vb.textContent;
+  function fade(to,ms){var a=song.volume,t0=performance.now();(function f(n){var k=Math.min(1,(n-t0)/ms);song.volume=a+(to-a)*k;if(k<1)requestAnimationFrame(f)})(t0)}
+  voice.addEventListener('error',function(){$('vs').style.display='none'}); // hides itself if no voice file uploaded
+  function reset(){on=false;fade(.55,700);vb.textContent=label}
+  vb.onclick=function(){
+    if(on){voice.pause();voice.currentTime=0;reset();return}
+    fade(.12,500);var p=voice.play();
+    if(p&&p.then)p.then(function(){on=true;vb.textContent='listening…'}).catch(function(){fade(.55,400)});
+  };
+  voice.addEventListener('ended',reset);
+})();
+</script>
+</body>
+</html>
